@@ -16,3 +16,4 @@ bcrypt
 itsdangerous
 pyopenssl
 secrets
+flask-bootstrap
