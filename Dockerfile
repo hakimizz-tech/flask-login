@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Define environment variable
-ENV FLASK_APP wsgi.py
+ENV FLASK_APP=wsgi.py
 
 # Run app.py when the container launches
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]

@@ -6,7 +6,7 @@ load_dotenv()
 
 config=os.getenv('FLASK_ENV') or 'development'
 
-app, mail = create_app(config)
+app, auth = create_app(config)
 
 if __name__ == "__main__":
     if config == 'development':

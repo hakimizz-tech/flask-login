@@ -7,6 +7,7 @@ from app.db.config import initialize_db
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail, Message
 from flask_login import LoginManager
+from flask_httpauth import HTTPBasicAuth
 # from dotenv import load_dotenv
 # import os
 # load_dotenv()
@@ -39,6 +40,7 @@ def create_app(config=None) -> Flask:
     app = Flask(__name__)
     csrf = CSRFProtect(app)
     Bootstrap(app)
+    auth = HTTPBasicAuth(app)
     login_auth.init_app(app)
     login_auth.session_protection = 'strong'
     login_auth.login_view = 'login_bp.login_valid_users'
@@ -51,8 +53,8 @@ def create_app(config=None) -> Flask:
     app.config['MAIL_PORT'] =  587
     app.config['MAIL_USE_TLS'] = True
     app.config['MAIL_USE_SSL'] = False
-    app.config['MAIL_USERNAME'] = 'your email'
-    app.config['MAIL_PASSWORD'] ='your-password'
+    app.config['MAIL_USERNAME'] = 'jkimathi409@gmail.com'
+    app.config['MAIL_PASSWORD'] ='yyasetywljzudphr'
     mail.init_app(app)
 
     # Initialize extensions
@@ -64,7 +66,7 @@ def create_app(config=None) -> Flask:
     # Initialize Swagger
     initialize_swagger(app)
 
-    return app, mail
+    return app, auth
 
 # def send_email(subject, recipients, body):
 #     try:

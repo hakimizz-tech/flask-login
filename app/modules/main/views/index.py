@@ -21,3 +21,4 @@ def home():
                 return render_template('home.html')
     else:
         return make_response(render_template('home.html', form=form),200)
+    

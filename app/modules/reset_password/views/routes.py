@@ -59,5 +59,8 @@ def reset_token(token):
             
             flash('Your password has been updated! You are now able to log in', 'success')
             return redirect(url_for('login_bp.login_valid_users'))
+        else:
+            flash("The password don't much", 'error')
+            return render_template('reset_token.html', title='Reset Password', form=form)
     else:
         return render_template('reset_token.html', title='Reset Password', form=form)
